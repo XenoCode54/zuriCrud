@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const port = process.env.PORT || 3000
-const MONGODB_URL = "mongodb+srv://macxenonzuri:macxenonzuri123@cluster0.aeejx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const MONGODB_URL = "mongodb+srv://macxenonzuri:macxenonzuri123@cluster0.dwd2i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
