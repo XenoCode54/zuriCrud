@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const port = process.env.PORT || 3000
+const MONGODB_URL = "mongodb+srv://macxenonzuri:macxenonzuri123@cluster0.aeejx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 // parse application/json
 app.use(bodyParser.json())
 
-mongoose.connect('mongodb://localhost/zuriCRUD', {
+mongoose.connect(MONGODB_URL || 'mongodb://localhost/zuriCRUD', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
