@@ -7,14 +7,14 @@ const app = express();
 const port = process.env.PORT || 3000
 const MONGODB_URL = "mongodb+srv://macxenonzuri:macxenonzuri123@cluster0.dwd2i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
-
+console.log(process.env.MONGODB_URI)
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
 // parse application/json
 app.use(bodyParser.json())
 
-mongoose.connect(MONGODB_URL || 'mongodb://localhost/zuriCRUD', {
+mongoose.connect(process.env.MONGODB_URI || MONGODB_URL || 'mongodb://localhost/zuriCRUD', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
