@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/zuriCRUD', {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-}).then(() => console.log("Connected to database")).catch(err => console.log(err));
+}).then(() => console.log("Connected to database")).catch(err => console.log({message: "Not connected", error: err}));
 
 
 const UserSchema = new mongoose.Schema({
@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
 const Users = mongoose.model("User", UserSchema);
 
 app.get('/', (req, res) => {
-    res.send('Hello world')
+    res.send('Heroku App Running...')
 });
 
 app.get('/api/users', (req, res) => {
