@@ -4,13 +4,14 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+const port = process.env.PORT || 3000
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
 // parse application/json
 app.use(bodyParser.json())
 
-  //
 mongoose.connect('mongodb://localhost/zuriCRUD', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -98,4 +99,4 @@ app.delete("/api/users/:id", (req, res) => {
     });
 })
 
-app.listen(3000, () => console.log("running on 3000"));
+app.listen(port, () => console.log(`running on ${port}`));
