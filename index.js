@@ -32,17 +32,16 @@ const UserSchema = new mongoose.Schema({
 const Users = mongoose.model("User", UserSchema);
 
 app.get('/', (req, res) => {
-    res.send('started')
+    res.send('Hello world')
 });
 
 app.get('/api/users', (req, res) => {
 
     Users.find({}, function (err, users) {
         if (err) {
-            res.send({message: err.message})
-            return console.log(err.message);
+            res.status(500).send({message: err.message})
         }
-        res.send(users);
+        res.status(200).send(users);
     });
 })
 
@@ -57,12 +56,12 @@ app.post('/api/user', (req, res) => {
     newUser.save((err, result) => {
         if (err) {
             console.log(err)
-            newUser.messages = err.message;
-            res.send(newUser);
+            newUser.messages = `something went wrong ${err.message}`;
+            res.status(500).send(newUser);
         }
         result.messages = "Saved Successfully"
         console.log(result);
-        res.send(result)
+        res.status(200).send(result)
     })
 });
 
@@ -82,7 +81,7 @@ app.put('/api/users/:id', (req, res) => {
                 .send({error: "Document not found", message: err.message})
         }
         user.messages = "Successfully Updated"
-        res.send(user);
+        res.status(200).send(user);
     });
 
 });
